@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>About</title>
+        <style>
+            @import url(http://fonts.googleapis.com/css?family=Amatic+SC:700);
+            
+            body{
+                text-align: center;
+            }
+        h1{
+            font-family: 'Amatic SC', cursive;
+            font-weight: normal;
+            color: #8ac640;
+            font-size: 2.5em;
+        }
+        
+        
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        .fit {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .center {
+            display: block;
+            margin: auto;
+        }
+        
+        .img-responsive {
+            background-size: 100%
+        }
+        
+            </style>
+        
+    </head>
+
+    <body>
+        <div class="block1">
+            
+            <h1> Menu </h1>
+        
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        
+            <form method="get" action="{{ url_for('profile') }}">
+                <button id="btn" onclick="function();" type="submit" class="button">Profile</button>
+            </form>
+        
+            <form method="get" action="{{ url_for('compete') }}">
+                <button id="btn" onclick="function();" type="submit" class="button">Compete</button>
+            </form>
+        
+            <form method="get" action="{{ url_for('events') }}">
+                <button id="btn" onclick="function();" type="submit" class="button">Events</button>
+            </form>
+        
+            <form method="get" action="{{ url_for('tracking') }}">
+                <button id="btn" onclick="function();" type="submit" class="button">Tracking</button>
+            </form>
+        
+            <form method="get" action="{{ url_for('about') }}">
+                <button id="btn" onclick="function();" type="submit" class="button">About</button>
+            </form>
+        </div>
+    </body>
+</html>
