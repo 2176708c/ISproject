@@ -15,7 +15,7 @@
     <div id="map"></div>
     <script>
       function initMap() {
-        var glasgow = {lat: 55.8642 , lng: -4.2518};
+        var glasgow = {lat: 37.0631420 , lng: -8.0441350};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
           center: glasgow
@@ -24,34 +24,49 @@
           position: glasgow,
           map: map
         });
+	drawLine(map);
+	
       }
+
+	function drawLine(map){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				myFunction(this);
+			}
+		};
+
+		xhttp.open("GET", "cycling.gpx", true);
+		xhttp.send();
+
+		function myFunction(xml) {
+			var xmlDoc = xml.responseXML.getElementsByTagName("gpx")[0];
+			var trk1=xmlDoc.getElementsByTagName("trk")[0];
+			var trkpoints=trk1.getElementsByTagName("trkpt");
+			var flightPlanCoordinates=[];
+			for(i=0; i<trkpoints.length; i++){
+				var lati = trkpoints[i].getAttribute("lat");
+		    		var long = trkpoints[i].getAttribute("lon");
+				var coords = new google.maps.LatLng(trkpoints[i].getAttribute("lat"), trkpoints[i].getAttribute("lon"));
+				flightPlanCoordinates.push(coords);
+			}
+			var flightPath = new google.maps.Polyline({
+			  path: flightPlanCoordinates,
+			  geodesic: true,
+			  strokeColor: '#FF0000',
+			  strokeOpacity: 1.0,
+			  strokeWeight: 2
+			});
+			console.log(flightPath);
+			flightPath.setMap(map);
+
+		}
+
+	}
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnKbdNHt9mOIkSxF2s71R8Cm5ZwFttV1Q&callback=initMap"/>
     </script>
-    <script>
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			myFunction(this);
-		}
-	};
-
-	xhttp.open("GET", "cycling.gpx", true);
-	xhttp.send();
-
-	function myFunction(xml) {
-		var xmlDoc = xml.responseXML.getElementsByTagName("gpx")[0];
-		var trk1=xmlDoc.getElementsByTagName("trk")[0];
-		var trkpoints=trk1.getElementsByTagName("trkpt");
-		var previous=trkpoints[1];
-		for(i=1; i<trkpoints.length; i++){
-			var next=trkpoints[i].getAttribute("lat");
-				
-		}
-	}
-	
-   </script>
 	
   </body>
 </html>
