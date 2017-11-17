@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Events</title>
+        <title>Welcome</title>
         <style>
             @import url(http://fonts.googleapis.com/css?family=Amatic+SC:700);
 
@@ -16,7 +16,7 @@
 
 
         .button {
-            background-color: #4CAF50;
+            background-color: grey;
             border: none;
             color: white;
             padding: 15px 32px;
@@ -46,16 +46,6 @@
 
     </head>
     <body>
-        <div class="block1">
-            <h1>Events</h1>
-            <h2>Please choose an event you want to view</h2>
-
-            <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
-
-            <form method="get" action="{{ url_for('menu') }}">
-                <button id="btn" onclick="function();" type="submit" class="button">Back to Menu</button>
-            </form>
-
-        </div>
+        {% block body %}{% endblock %}
     </body>
 </html>

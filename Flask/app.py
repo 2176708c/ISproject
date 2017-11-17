@@ -1,7 +1,7 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def welcome():
     return render_template('welcome.html')
 
@@ -13,21 +13,21 @@ def menu():
 def about():
     return render_template('about.html')
 
-@app.route('/tracking')
-def tracking():
-    return render_template('tracking.html')
+@app.route('/choose')
+def choose():
+    return render_template('choose.html')
 
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
 
-@app.route('/compete')
-def compete():
-    return render_template('compete.html')
+@app.route('/create')
+def create():
+    return render_template('create.html')
 
-@app.route('/events')
-def events():
-    return render_template('events.html')
+@app.route('/')
+def logout():
+    return render_template('welcome.html')
 
 @app.route('/statistics')
 def statistics():
