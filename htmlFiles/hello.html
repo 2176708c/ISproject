@@ -9,6 +9,7 @@
     </style>
   </head>
   <body>
+	<h3 id="demo"></h3>
     <h3>My Google Maps Demo</h3>
     <div id="map"></div>
     <script>
@@ -27,5 +28,26 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnKbdNHt9mOIkSxF2s71R8Cm5ZwFttV1Q&callback=initMap"/>
     </script>
+	<script>
+	var xhttp = new XMLHttpRequest();
+	
+	xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		myFunction(this);
+	}
+};
+console.log("here");
+xhttp.open("GET", "running.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+	document.getElementById("demo").innerHTML ="here";
+	var xmlDoc = xml.responseXML.getElementsByTagName("gpx")[0];
+	var trk1=xmlDoc.getElementsByTagName("trk")[0];
+	var name=trk1.getElementsByTagName("name")[0];
+	document.getElementById("demo").innerHTML =name.firstChild.data;
+}
+	</script>
+	
   </body>
 </html>
