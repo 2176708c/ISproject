@@ -13,23 +13,5 @@
 
             <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
-            <img id="loading" src="https://cdn.dribbble.com/users/43718/screenshots/1137873/loadinganimation1.gif" style="display: none;" />
-
-            <script type="text/javascript">
-                $(function()
-                  {
-                  $('#btn').click(function()
-                      {
-
-                                  $("#loading").show();
-                                  $('#btn').hide();
-                      })
-                  })
-            </script>
-
-            <form method="get" action="{{ url_for('menu') }}">
-                <button id="btn" onclick="function();" type="submit" class="button">Back to Menu</button>
-            </form>
-
         </div>
 {% endblock %}

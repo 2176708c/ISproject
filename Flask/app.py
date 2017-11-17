@@ -5,10 +5,6 @@ app = Flask(__name__)
 def welcome():
     return render_template('welcome.html')
 
-@app.route('/menu')
-def menu():
-    return render_template('menu.html')
-
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -28,10 +24,6 @@ def create():
 @app.route('/')
 def logout():
     return render_template('welcome.html')
-
-@app.route('/statistics')
-def statistics():
-    return render_template('statistics.html')
 
 if __name__ == "__main__":
     app.run()
