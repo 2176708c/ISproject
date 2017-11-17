@@ -66,7 +66,38 @@
           }
           document.getElementById("demo").innerHTML=distance;
 
-          
+          var time1=trkpoints[trkpoints.length-1].getElementsByTagName("time")[0].innerHTML;
+          var h1=parseInt(time1.slice(11,13));
+          var min1=parseInt(time1.slice(14,16));
+          var sec1=parseInt(time1.slice(17,19));
+
+          var time2=trkpoints[0].getElementsByTagName("time")[0].innerHTML;
+          var h2=parseInt(time2.slice(11,13));
+          var min2=parseInt(time2.slice(14,16));
+          var sec2=parseInt(time2.slice(17,19));
+
+          var hoursrun=(h1-h2)%24;
+          var minrun=(min1-min2);
+          var secrun=(sec1-sec2);
+
+          if (secrun < 0) {
+            secrun += 60;
+            minrun -= 1;
+          }
+
+          if (minrun < 0) {
+            minrun += 60;
+            hoursrun -= 1;
+          }
+
+          if (hoursrun < 0) {
+            hoursrun += 24;
+          }
+
+          console.log(hoursrun);
+          console.log(minrun);
+          console.log(secrun);
+
 
         }
       }
