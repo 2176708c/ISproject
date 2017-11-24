@@ -11,11 +11,18 @@
         height: 400px;
         width: 80%;
        }
+	#demo{
+	color: white;
+	}
+	#time{
+	color: white;
+	}
     </style>
   </head>
   <body>
   <h3 id="demo"></h3>
-    <h3>My Google Maps Demo</h3>
+<h3 id="time"></h3>
+    <h3>Runify</h3>
     <div id="map"></div>
     <div id="pano"></div>
 
@@ -80,7 +87,7 @@
             distance+=google.maps.geometry.spherical.computeDistanceBetween(previous,next);
             previous=next;
           }
-          document.getElementById("demo").innerHTML=distance;
+          document.getElementById("demo").innerHTML="Total distance: " + distance;
 
           var time1=trkpoints[trkpoints.length-1].getElementsByTagName("time")[0].innerHTML;
           var h1=parseInt(time1.slice(11,13));
@@ -113,6 +120,7 @@
           console.log(hoursrun);
           console.log(minrun);
           console.log(secrun);
+	 document.getElementById("time").innerHTML=hoursrun + " " + minrun + " " + secrun + " time to be done" ;
 
 
         }
