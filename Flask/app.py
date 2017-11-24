@@ -8,13 +8,21 @@ from flask import (
     session,
     abort
 )
-
+from werkzeug import secure_filename
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def welcome():
     return render_template('welcome.html')
+
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      f.save(secure_filename(f.filename))
+      return 'file uploaded successfully'
 
 @app.route('/about')
 def about():
