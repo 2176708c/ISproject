@@ -1,5 +1,5 @@
 
-from flask import ( 
+from flask import (
     Flask,
     flash,
     redirect,
@@ -21,8 +21,8 @@ def welcome():
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
-      f.save(secure_filename(f.filename))
-      return 'file uploaded successfully'
+      f.save("templates/" + secure_filename(f.filename))
+      return render_template('hello.html')
 
 @app.route('/about')
 def about():
