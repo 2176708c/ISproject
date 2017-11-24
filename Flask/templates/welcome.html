@@ -1,14 +1,94 @@
-{% extends "base.html" %}
-{% block body %}
-        <div class="block1">
-            <h1>Hello! Welcome to APPNAME!</h1>
-	    <img src="http://is3.mzstatic.com/image/thumb/Purple122/v4/13/96/2a/13962aaf-97f5-387e-4d79-142e95280b0d/source/175x175bb.jpg" alt="Logo" width="350" height="200">
-            <h2>Track your marathon</h2>
-            <p>
-            "Please sign up or login in order to proceed"
-            </p>
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset="utf-8">
+        <title>Runify</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+        <link rel="icon" href="static/images/running.png" type="image/gif" sizes="256x256">
+    </head>
 
-            <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
+    <header>
+        <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img style="max-height:30px; margin-top:-5px " src="{{ url_for('static', filename='images/running.png') }}">
+                    </a>
+                  </div>
+              
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li><a href="/"><b>Home</b></a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                          <ul id="login-dp" class="dropdown-menu">
+                              <li>
+                                   <div class="row">
+                                          <div class="col-md-12">
+                                              Login via
+                                              <div class="social-buttons">
+                                                  <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                                  <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                              </div>
+                                              or
+                                               <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                      <div class="form-group">
+                                                           <label class="sr-only" for="InputEmail">Email address</label>
+                                                           <input type="email" class="form-control" id="InputEmail" placeholder="Email address" required>
+                                                      </div>
+                                                      <div class="form-group">
+                                                           <label class="sr-only" for="InputPassword">Password</label>
+                                                           <input type="password" class="form-control" id="InputPassword" placeholder="Password" required>
+                                                           <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                                      </div>
+                                                      <div class="form-group">
+                                                           <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                                      </div>
+                                                      <div class="checkbox">
+                                                           <label>
+                                                           <input type="checkbox"> keep me logged-in
+                                                           </label>
+                                                      </div>
+                                               </form>
+                                          </div>
+                                   </div>
+                              </li>
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
+
+
+    </header>
+    
+
+
+    <body>
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <h1>RUNIFY</h1>      
+                <p>Share your run routes with other users!</p>
+            </div>
         </div>
-{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    </body>
+
+
+
+</html>
