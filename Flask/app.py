@@ -21,8 +21,10 @@ def welcome():
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
-      f.save("static/gpx/" + secure_filename(f.filename))
-      #return render_template('uploaded.html')
+      file_path = "static/gpx/" + secure_filename(f.filename)
+      f.save(file_path)
+      subprocess.call(['firefox', '/home/leonidas/workspace/IS/ISproject/htmlFiles/hello.html'])
+      return render_template('welcome.html')
 
 @app.route('/about')
 def about():
