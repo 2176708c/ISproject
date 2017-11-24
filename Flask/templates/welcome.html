@@ -85,11 +85,14 @@
                 <p>Share your run routes with other users!</p>
             </div>
         </div>
-        <form action = "http://localhost:5000/uploader" method = "POST" 
-            enctype = "multipart/form-data">
-           <input type = "file" name = "file" />
-           <input type = "submit"/>
-        </form>
+        <div>
+            <form action = "http://localhost:5000/uploader" method = "POST" 
+                enctype = "multipart/form-data">
+            <input type = "file" name = "file" />
+            <input type = "submit"/>
+            </form>
+        </div>
+        
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     </body>

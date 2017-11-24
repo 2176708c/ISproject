@@ -9,7 +9,7 @@ from flask import (
     abort
 )
 from werkzeug import secure_filename
-
+import subprocess
 app = Flask(__name__)
 
 
@@ -21,8 +21,8 @@ def welcome():
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
-      f.save("templates/" + secure_filename(f.filename))
-      return render_template('hello.html')
+      f.save("static/gpx/" + secure_filename(f.filename))
+      #return render_template('uploaded.html')
 
 @app.route('/about')
 def about():
