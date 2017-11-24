@@ -3,9 +3,10 @@
   <head>
   <meta charset="UTF-8">
     <style>
-      #map {
+      #map, #pano {
+	float: left;
         height: 400px;
-        width: 100%;
+        width: 45%;
        }
     </style>
   </head>
@@ -13,6 +14,8 @@
   <h3 id="demo"></h3>
     <h3>My Google Maps Demo</h3>
     <div id="map"></div>
+    <div id="pano"></div>
+
     <script>
       function initMap() {
         drawLine(map);
@@ -55,6 +58,16 @@
                   position: centre,
                   map: map
               });
+	   var panorama = new google.maps.StreetViewPanorama(
+	      document.getElementById('pano'), {
+		position: {lat: 42.345573, lng: -71.098326},
+		pov: {
+		  heading: 34,
+		  pitch: 10
+		}
+	      });
+	  map.setStreetView(panorama);
+	     
           flightPath.setMap(map);
 
           var distance=0;
