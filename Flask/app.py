@@ -86,7 +86,7 @@ def register():
         # commit the record the database
         session.commit()
         
-        return (render_template('login.html'))
+        return (render_template('home.html'))
     return (render_template('register.html'))
 
 @app.route('/julie')
