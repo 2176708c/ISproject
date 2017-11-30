@@ -9,6 +9,8 @@ from flask import (
                    )
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
 from flask.ext.login import LoginManager
+from werkzeug.utils import secure_filename
+import uuid
 
 app = Flask(__name__)
 login_manager = LoginManager()
@@ -25,6 +27,14 @@ def home():
 @app.route('/about')
 def about():
     return (render_template('about.html'))
+
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      unique_filename = str(uuid.uuid4()) + ".gpx"
+      f.save("static/gpx/" + secure_filename(unique_filename))
+      return (render_template('upload.html'))
 
 @app.route('/upload')
 def upload():
@@ -65,4 +75,3 @@ if __name__ == "__main__":
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
     app.run(debug=True)
-
