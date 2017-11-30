@@ -4,7 +4,9 @@
         <div class="jumbotron">
            <h1>Runify App</h1>
            <p class="lead"></p>
-           <p><a class="btn btn-lg btn-success" href="{{ url_for('register') }}" role="button">Sign up today</a></p>
+           {% if not session['logged_in'] %}
+                <p><a class="btn btn-lg btn-success" href="{{ url_for('register') }}" role="button">Sign up today</a></p>
+            {% endif %}
        </div>
 
        <div class="row marketing">

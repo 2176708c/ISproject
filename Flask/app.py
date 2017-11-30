@@ -7,18 +7,14 @@ from flask import (
                    session,
                    abort
                    )
-from wtforms import Form, BooleanField, StringField, PasswordField, validators
-from flask.ext.login import LoginManager
+import os
+from sqlalchemy.orm import sessionmaker
+from tabledef import *
+engine = create_engine('sqlite:///tutorial.db', echo=True)
 from werkzeug.utils import secure_filename
 import uuid
 
 app = Flask(__name__)
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
 
 @app.route('/')
 def home():
@@ -48,11 +44,18 @@ def profile():
 def login():
     error=None
     if request.method == 'POST':
-        if request.form['username']=='admin' and request.form['password'] == 'admin':
+        POST_USERNAME = request.form['username']
+        POST_PASSWORD = request.form['password']
+        
+        Session = sessionmaker(bind=engine)
+        s = Session()
+        query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
+        result = query.first()
+        if result:
             session['logged_in'] = True
             return (render_template('home.html'))
         else:
-            error= 'Invalid Credentials! Please try again'
+            error = 'wrong password!'
     return render_template('login.html', error=error)
 
 @app.route('/logout')
