@@ -35,7 +35,7 @@ def upload_file():
 
 @app.route('/upload')
 def upload():
-    return show()
+    return (render_template('upload.html'))
 
 @app.route('/show')
 def show():
@@ -73,16 +73,16 @@ def register():
     if request.method == 'POST':
         USERNAME = request.form['username']
         PASSWORD = request.form['password']
-    
+
         # create a Session
         Session = sessionmaker(bind=engine)
         session = Session()
-        
+
         user = User(USERNAME, PASSWORD)
         session.add(user)
         # commit the record the database
         session.commit()
-        
+
         return (render_template('home.html'))
     return (render_template('register.html'))
 
