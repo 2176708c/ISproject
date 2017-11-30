@@ -31,11 +31,15 @@ def upload_file():
       f = request.files['file']
       unique_filename = str(uuid.uuid4()) + ".gpx"
       f.save("static/gpx/" + secure_filename(unique_filename))
-      return (render_template('upload.html'))
+      return show()
 
 @app.route('/upload')
 def upload():
     return show()
+
+@app.route('/show')
+def show():
+    return (render_template('show.html', value = url_for('static', filename='gpxcycling.gpx')))
 
 @app.route('/show')
 def show():
