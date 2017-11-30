@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-                    <link rel="icon" href="static/images/running.png" type="image/gif" sizes="256x256">
+                    <link rel="icon" href="static/image/running.png" type="image/gif" sizes="256x256">
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                         
                         
@@ -17,12 +17,15 @@
         <div class="topnav">
             <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='image/running-white.png') }}" alt="Runify"
                 style="max-height:20px; margin-top:-3px "><b>Runify</b></a>
-            <a href="{{ url_for('upload') }}">Upload</a>
             <a href="{{ url_for('about') }}">About</a>
-            <a href="{{ url_for('julie') }}">Julie</a>
-            <a href="{{ url_for('login') }}" style="float:right">Login</a>
-            <a href="{{ url_for('register') }}" style="float:right">Register</a>
-            <a href="{{ url_for('profile') }}" style="float:right">Profile</a>
+            {% if session['logged_in'] %}
+                <a href="{{ url_for('upload') }}">Upload</a>
+                <a href="{{ url_for('profile') }}" style="float:right">Profile</a>
+                <a href="{{ url_for('logout') }}" style="float:right">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" style="float:right">Login</a>
+                <a href="{{ url_for('register') }}" style="float:right">Register</a>
+            {% endif %}
         </div>
         {% block body %}{% endblock body %}
     </body>

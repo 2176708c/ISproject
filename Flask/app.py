@@ -39,10 +39,16 @@ def login():
     error=None
     if request.method == 'POST':
         if request.form['username']=='admin' and request.form['password'] == 'admin':
+            session['logged_in'] = True
             return (render_template('home.html'))
         else:
             error= 'Invalid Credentials! Please try again'
     return render_template('login.html', error=error)
+
+@app.route('/logout')
+def logout():
+    session['logged_in'] = False
+    return render_template('home.html')
 
 @app.route('/register',  methods=['GET', 'POST'])
 def register():
