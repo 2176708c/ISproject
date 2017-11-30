@@ -74,8 +74,19 @@ def logout():
 
 @app.route('/register',  methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        return (render_template('home.html'))
+    USERNAME = request.form['username']
+    PASSWORD = request.form['password']
+    
+    # create a Session
+    Session = sessionmaker(bind=engine)
+        session = Session()
+        
+        user = User(USERNAME, PASSWORD)
+        session.add(user)
+        # commit the record the database
+        session.commit()
+        
+        return (render_template('login.html'))
     return (render_template('register.html'))
 
 @app.route('/julie')
