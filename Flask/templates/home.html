@@ -1,6 +1,54 @@
-{% extends "base.html" %}
-{% block title %} - Home{% endblock %}
-{% block body %}
-    <h1>HOME PAGE</h1>
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        {% block head %}
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+                    <link rel="icon" href="static/images/running.png" type="image/gif" sizes="256x256">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-{% endblock body %}
+
+                        <title>Runify{% block title %}{% endblock title %}</title>
+                        {% endblock head %}
+                        {% block head2 %}{% endblock head2 %}
+                        </head>
+    <body>
+
+        <div class="topnav">
+            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='image/running-white.png') }}" alt="Runify"
+                style="max-height:20px; margin-top:-3px "><b>Runify</b></a>
+            <a href="{{ url_for('upload') }}">Upload</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('julie') }}">Julie</a>
+            <a href="{{ url_for('login') }}" style="float:right">Login</a>
+            <a href="{{ url_for('register') }}" style="float:right">Register</a>
+            <a href="{{ url_for('profile') }}" style="float:right">Profile</a>
+        </div>
+
+        <div class="jumbotron">
+           <h1>Runify App</h1>
+           <p class="lead"></p>
+           <p><a class="btn btn-lg btn-success" href="{{ url_for('register') }}" role="button">Sign up today</a></p>
+       </div>
+
+       <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Upload your route</h4>
+                <p>You can choose an existing route for your run or you can even upload your own!</p>
+
+                <h4>Created with runnners in mind</h4>
+                <p>This application has been made with the user in mind. It's intuitive and easy to use!</p>
+
+                <h4>Have your own profile</h4>
+                <p>You have a profile all to yourself where you can see your previous runs and can even compete with your friends!</p>
+            </div>
+       </div>
+
+       <div>
+         <h4>Recently uploaded routes</h4>
+
+
+        {% block body %}{% endblock body %}
+    </body>
+</html>
