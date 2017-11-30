@@ -41,10 +41,6 @@ def upload():
 def show():
     return (render_template('show.html', value = url_for('static', filename='gpxcycling.gpx')))
 
-@app.route('/show')
-def show():
-    return (render_template('show.html', value = url_for('static', filename='gpxcycling.gpx')))
-
 @app.route('/profile')
 def profile():
     return (render_template('profile.html'))
@@ -74,11 +70,12 @@ def logout():
 
 @app.route('/register',  methods=['GET', 'POST'])
 def register():
-    USERNAME = request.form['username']
-    PASSWORD = request.form['password']
+    if request.method == 'POST':
+        USERNAME = request.form['username']
+        PASSWORD = request.form['password']
     
-    # create a Session
-    Session = sessionmaker(bind=engine)
+        # create a Session
+        Session = sessionmaker(bind=engine)
         session = Session()
         
         user = User(USERNAME, PASSWORD)
