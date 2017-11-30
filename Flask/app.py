@@ -5,7 +5,8 @@ from flask import (
                    render_template,
                    request,
                    session,
-                   abort
+                   abort,
+                   url_for
                    )
 import os
 from sqlalchemy.orm import sessionmaker
@@ -34,7 +35,11 @@ def upload_file():
 
 @app.route('/upload')
 def upload():
-    return (render_template('upload.html'))
+    return show()
+
+@app.route('/show')
+def show():
+    return (render_template('show.html', value = url_for('static', filename='gpxcycling.gpx')))
 
 @app.route('/profile')
 def profile():
@@ -46,7 +51,7 @@ def login():
     if request.method == 'POST':
         POST_USERNAME = request.form['username']
         POST_PASSWORD = request.form['password']
-        
+
         Session = sessionmaker(bind=engine)
         s = Session()
         query = s.query(User).filter(User.username.in_([POST_USERNAME]), User.password.in_([POST_PASSWORD]) )
