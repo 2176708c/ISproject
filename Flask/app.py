@@ -19,7 +19,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return (render_template('home.html'))
+    path = "static/gpx/"
+    routes = os.listdir(path)
+    print(routes)
+    return (render_template('home.html', routes = routes))
 
 @app.route('/about')
 def about():
