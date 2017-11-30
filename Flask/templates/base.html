@@ -20,8 +20,8 @@
             <a href="{{ url_for('about') }}">About</a>
             {% if session['logged_in'] %}
                 <a href="{{ url_for('upload') }}">Upload</a>
-                <a href="{{ url_for('profile') }}" style="float:right">Profile</a>
                 <a href="{{ url_for('logout') }}" style="float:right">Logout</a>
+                <a href="{{ url_for('profile') }}" style="float:right">Profile</a>
             {% else %}
                 <a href="{{ url_for('login') }}" style="float:right">Login</a>
                 <a href="{{ url_for('register') }}" style="float:right">Register</a>

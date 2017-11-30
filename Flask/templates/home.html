@@ -1,31 +1,6 @@
-<!DOCTYPE html>
-<html lang=en>
-    <head>
-        {% block head %}
-        <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
-                    <link rel="icon" href="static/images/running.png" type="image/gif" sizes="256x256">
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-                        <title>Runify{% block title %}{% endblock title %}</title>
-                        {% endblock head %}
-                        {% block head2 %}{% endblock head2 %}
-                        </head>
-    <body>
-
-        <div class="topnav">
-            <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='image/running-white.png') }}" alt="Runify"
-                style="max-height:20px; margin-top:-3px "><b>Runify</b></a>
-            <a href="{{ url_for('upload') }}">Upload</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <a href="{{ url_for('julie') }}">Julie</a>
-            <a href="{{ url_for('login') }}" style="float:right">Login</a>
-            <a href="{{ url_for('register') }}" style="float:right">Register</a>
-            <a href="{{ url_for('profile') }}" style="float:right">Profile</a>
-        </div>
-
+{% extends "base.html" %}
+{% block title %}- Profile{% endblock %}
+{% block body %}
         <div class="jumbotron">
            <h1>Runify App</h1>
            <p class="lead"></p>
@@ -47,8 +22,7 @@
 
        <div>
          <h4>Recently uploaded routes</h4>
+       </div>
 
+{% endblock body %}
 
-        {% block body %}{% endblock body %}
-    </body>
-</html>
