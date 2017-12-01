@@ -21,7 +21,6 @@ app = Flask(__name__)
 def home():
     path = "static/gpx/"
     routes = os.listdir(path)
-    print(routes)
     return (render_template('home.html', routes = routes))
 
 @app.route('/about')
@@ -34,15 +33,16 @@ def upload_file():
       f = request.files['file']
       unique_filename = str(uuid.uuid4()) + ".gpx"
       f.save("static/gpx/" + secure_filename(unique_filename))
-      return show()
+      return (show(unique_filename))
 
 @app.route('/upload')
 def upload():
     return (render_template('upload.html'))
 
-@app.route('/show')
-def show():
-    return (render_template('show.html', value = url_for('static', filename='gpxcycling.gpx')))
+@app.route('/show/<file>')
+def show(file):
+    file_url = url_for('static', filename=('gpx/' + file))
+    return (render_template('show.html', value = file_url))
 
 @app.route('/profile')
 def profile():
