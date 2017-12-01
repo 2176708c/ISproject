@@ -33,7 +33,7 @@ def upload_file():
       f = request.files['file']
       unique_filename = str(uuid.uuid4()) + ".gpx"
       f.save("static/gpx/" + secure_filename(unique_filename))
-      return (show(unique_filename))
+      return (home())
 
 @app.route('/upload')
 def upload():
