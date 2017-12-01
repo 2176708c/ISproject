@@ -5,7 +5,7 @@
            <h1>Runify App</h1>
            <p class="lead"></p>
            {% if not session['logged_in'] %}
-                <p><a class="btn btn-lg btn-success" style="font-size:1.7em;" href="{{ url_for('register') }}" role="button">Sign up today</a></p>
+                <p><a class="btn btn-lg btn-success" href="{{ url_for('register') }}" role="button">Sign up today</a></p>
             {% endif %}
        </div>
 
@@ -43,7 +43,7 @@
             {% endfor %}
          </script> -->
          {% for file in files %}
-            <button type="button" onclick="window.open('localhost:5000/show/{{file}}')"> Route {{loop.index}} </button>
+            <button type="button" onclick="window.open('localhost:5000/show/{{file.filename}}')"> Route {{loop.index}} </button>
          {% endfor %}
 
 {% endblock body %}
