@@ -29,11 +29,22 @@ def about():
 
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
-   if request.method == 'POST':
-      f = request.files['file']
-      unique_filename = str(uuid.uuid4()) + ".gpx"
-      f.save("static/gpx/" + secure_filename(unique_filename))
-      return (home())
+    if request.method == 'POST':
+        TITLE = request.form['title']
+        DESCRIPTION = request.form['description']
+
+        # create a Session
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        file = File(TITLE, DESCRIPTION)
+        session.add(file)
+        # commit the record the database
+        session.commit()
+        f = request.files['file']
+        unique_filename = str(uuid.uuid4()) + ".gpx"
+        f.save("static/gpx/" + secure_filename(unique_filename))
+        return (home())
 
 @app.route('/upload')
 def upload():

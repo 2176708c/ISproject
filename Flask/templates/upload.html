@@ -145,13 +145,19 @@
         <h1>UPLOAD</h1>
         <h2 id="file-title"></h2>
         <span id="activity-overview"></span>
+        <br>
+        <p id="file-preview"> Please Select a file to Upload </p><br />
+        <form class="custom-form" action="http://localhost:5000/uploader" method="POST" enctype = "multipart/form-data">
+            <div class="container">
+                <input id="file-input" type = "file" name = "file" />
 
-
-        <p id="file-preview"> Please Select a file to Upload </p>
-        <form action = "http://localhost:5000/uploader" method = "POST"
-        enctype = "multipart/form-data">
-        <input id="file-input" type = "file" name = "file" />
-        <input type = "submit"/>
+                <label style="margin:5px;font-size: 20px; color: #333"><b>Title</b></label>
+                <input style="margin:8px 0 16px" type="text" placeholder="Title" name="title">
+                    
+                <label style="margin:5px;font-size: 20px; color: #333"><b>Description</b></label>
+                <input type="text" placeholder="Description" name="description"><br>
+                <input type = "submit"/>
+            </div>
         </form>
 
         <div id="map"></div>

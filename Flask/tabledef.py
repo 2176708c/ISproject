@@ -20,5 +20,18 @@ class User(Base):
         self.username = username
         self.password = password
 
+class File(Base):
+    """"""
+    __tablename__ = "files"
+    
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    description = Column(String)
+    
+    def __init__(self, title, description):
+        """"""
+        self.title = title
+        self.description = description
+
 # create tables
 Base.metadata.create_all(engine)
