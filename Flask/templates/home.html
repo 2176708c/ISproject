@@ -25,16 +25,14 @@
        <div>
          <h4> Recently uploaded routes</h4>
          <script>
-            var name = 1;
             {% for route in routes %}
                 console.log("{{route}}");
                 var a = document.createElement('a');
-                var linkText = document.createTextNode("Route " + name + "\n");
+                var linkText = document.createTextNode("Route " + {{loop.index}} + "\n");
                 a.appendChild(linkText);
                 //a.title = "my title text";
                 a.href = "localhost:5000/show/" + "{{route}}";
                 document.body.appendChild(a);
-                name += 1;
             {% endfor %}
          </script>
        </div>
