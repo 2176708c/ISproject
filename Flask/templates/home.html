@@ -25,13 +25,19 @@
        <div>
          <h4> Recently uploaded routes</h4>
          <script>
+
+            var redirect = function(route) {
+                window.location = ("localhost:5000/show/" + route);
+            }
+
             {% for route in routes %}
                 console.log("{{route}}");
-                var a = document.createElement('a');
+                var a = document.createElement("BUTTON");
                 var linkText = document.createTextNode("Route " + {{loop.index}} + "\n");
                 a.appendChild(linkText);
                 //a.title = "my title text";
-                a.href = "localhost:5000/show/" + "{{route}}";
+                //a.href = "localhost:5000/show/" + "{{route}}";
+                a.onclick = function() {redirect({{route}})};
                 document.body.appendChild(a);
             {% endfor %}
          </script>
