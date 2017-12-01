@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 {% block title %}- Profile{% endblock %}
 {% block body %}
-    <h1>REGISTER</h1>
-    <br>
-    <p align="left">
-        Please Complete all fields in order to complete registration
-    </p>
-    <form action="" method="post" align="left">
-        <input type="text" placeholder="Username" name="username"><br>
-        <input type="password" placeholder="Password" name="password"><br>
-        <input type="submit" value="Register" href="{{ url_for('home') }}">
-    </form>
+    <div class="container">
+        <h1>Register</h1>
+        <br>
+        <form class="custom-form" action="" method="post">
+            <div class="container">
+                <label style="margin:5px;font-size: 20px; color: #333"><b>Username</b></label>
+                <input style="margin:8px 0 16px" type="text" placeholder="Username" name="username">
+
+                <label style="margin:5px;font-size: 20px; color: #333"><b>Password</b></label>
+                <input type="password" placeholder="Password" name="password"><br>
+                <button class="submit-button" style="background-color: rgb(255, 115, 0)" type="submit"><b>Register</b></button href="{{ url_for('home') }}">
+            </div>
+        </form>
+    </div>
 
 {% endblock body %}
