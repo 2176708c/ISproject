@@ -43,7 +43,7 @@
             {% endfor %}
          </script> -->
          {% for route in routes %}
-            <button type="button" onclick="location.href='localhost:5000/show/{{route}}'"> Route {{loop.index}} </button>
+            <button type="button" onclick="window.open('localhost:5000/show/{{route}}')"> Route {{loop.index}} </button>
          {% endfor %}
 
 {% endblock body %}
