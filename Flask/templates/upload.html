@@ -147,7 +147,7 @@
         <span id="activity-overview"></span>
         <br>
         <p id="file-preview"> Please Select a file to Upload </p><br />
-        <form class="custom-form" action="http://localhost:5000/uploader" method="POST" enctype = "multipart/form-data">
+        <form class="custom-form" style="float:left;width:40%"action="http://localhost:5000/uploader" method="POST" enctype = "multipart/form-data">
             <div class="container">
                 <label style="margin:5px;font-size: 20px; color: #333"><b>Title</b></label>
                 
@@ -162,7 +162,7 @@
             </div>
         </form>
 
-        <div id="map"></div>
+        <div id="map" style="margin:8px;float:right;width:50%">
         <script>
             var map;
             function initMap() {
@@ -174,5 +174,5 @@
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnKbdNHt9mOIkSxF2s71R8Cm5ZwFttV1Q&callback=initMap&libraries=geometry"
             async defer></script>
-    <!-- </div> -->
+        </div>
 {% endblock body %}
