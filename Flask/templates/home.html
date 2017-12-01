@@ -2,7 +2,8 @@
 {% block title %}- Home{% endblock %}
 {% block body %}
         <div class="jumbotron">
-           <h1>Runify App</h1>
+          <h1></h1>
+           <img src="static/image/logo.png" alt="LOGO">
            <p class="lead"></p>
            {% if not session['logged_in'] %}
                 <p><a class="btn btn-lg btn-success" style="font-size:1.7em;" href="{{ url_for('register') }}" role="button">Sign up today</a></p>
