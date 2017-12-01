@@ -42,8 +42,8 @@
                 document.body.appendChild(a);
             {% endfor %}
          </script> -->
-         {% for route in routes %}
-            <button type="button" onclick="window.open('localhost:5000/show/{{route}}')"> Route {{loop.index}} </button>
+         {% for file in files %}
+            <button type="button" onclick="window.open('localhost:5000/show/{{file}}')"> Route {{loop.index}} </button>
          {% endfor %}
 
 {% endblock body %}

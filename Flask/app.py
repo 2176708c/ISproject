@@ -20,8 +20,11 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     path = "static/gpx/"
+    Session = sessionmaker(bind=engine)
+    s = Session()
+    files = s.query(File).all()
     routes = os.listdir(path)
-    return (render_template('home.html', routes = routes))
+    return (render_template('home.html', routes = routes,files = files))
 
 @app.route('/about')
 def about():
@@ -51,10 +54,11 @@ def upload():
 
 @app.route('/show/<file>')
 def show(file):
-    #file_url = File.query.filter_by(filename=file).first_or_404()
-    #return render_template('show.html', file=file_url)
-    file_url = url_for('static', filename=('gpx/' + file))
-    return (render_template('show.html', value = file_url))
+    file= File.query.filter_by(filename=file).first_or_404()
+    filename = file.filename
+    return render_template('show.html', value=filanme)
+    #file_url = url_for('static', filename=('gpx/' + file))
+#return (render_template('show.html', value = file_url))
 
 @app.route('/profile')
 def profile():
