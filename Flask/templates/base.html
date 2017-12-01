@@ -16,7 +16,7 @@
     <body>
         <div class="topnav">
             <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='image/running-white.png') }}" alt="Runify"
-                style="max-height:20px; margin-top:-3px "><b>Runify</b></a>
+                style="max-height:19px; margin-top:-3px "><b>Runify</b></a>
             <a href="{{ url_for('about') }}">About</a>
             {% if session['logged_in'] %}
                 <a href="{{ url_for('upload') }}">Upload</a>
