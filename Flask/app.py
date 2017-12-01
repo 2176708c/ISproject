@@ -24,7 +24,7 @@ def home():
     s = Session()
     files = s.query(File).all()
     routes = os.listdir(path)
-    return (render_template('home.html', routes = routes,files = files))
+    return (render_template('home.html', routes = routes, files = files))
 
 @app.route('/about')
 def about():
@@ -36,11 +36,11 @@ def upload_file():
         f = request.files['file']
         unique_filename = str(uuid.uuid4()) + ".gpx"
         TITLE = request.form['title']
-        
+
         # create a Session
         Session = sessionmaker(bind=engine)
         session = Session()
-        
+
         file = File(TITLE, unique_filename)
         session.add(file)
         # commit the record the database
@@ -56,10 +56,13 @@ def upload():
 def show(file):
     Session = sessionmaker(bind=engine)
     s = Session()
-    f = s.query(File).filter_by(filename=file).first_or_404()
-    fn = f.filename
-    return render_template('show.html', value=fn)
-    #file_url = url_for('static', filename=('gpx/' + file))
+    #file= s.query.filter_by(filename=file).first_or_404()
+    files = s.query(File).all()
+    for qfile in files:
+        if qfile.filename == file:
+            title = qfile.title
+    file_url = url_for('static', filename=('gpx/' + file))
+    return render_template('show.html', value=file_url, title=title)
 #return (render_template('show.html', value = file_url))
 
 @app.route('/profile')
