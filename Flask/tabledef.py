@@ -26,12 +26,12 @@ class File(Base):
     
     id = Column(Integer, primary_key=True)
     title = Column(String)
-    description = Column(String)
+    filename = Column(String)
     
-    def __init__(self, title, description):
+    def __init__(self, title, filename):
         """"""
         self.title = title
-        self.description = description
+        self.filename = filename
 
 # create tables
 Base.metadata.create_all(engine)
