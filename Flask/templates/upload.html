@@ -149,12 +149,16 @@
         <p id="file-preview"> Please Select a file to Upload </p><br />
         <form class="custom-form" action="http://localhost:5000/uploader" method="POST" enctype = "multipart/form-data">
             <div class="container">
-                <input id="file-input" type = "file" name = "file" />
-
                 <label style="margin:5px;font-size: 20px; color: #333"><b>Title</b></label>
+                
                 <input style="margin:8px 0 16px" type="text" placeholder="Title" name="title">
+                <div>
+                    <input id="file-input" type = "file" name = "file" />
+                </div>
 
-                <input type = "submit"/>
+                
+                
+                <button class="submit-button" type="submit">Submit</button>
             </div>
         </form>
 
