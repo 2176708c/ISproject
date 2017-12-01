@@ -43,7 +43,7 @@
             {% endfor %}
          </script> -->
          {% for file in files %}
-            <button type="button" onclick="window.open('localhost:5000/show/{{file.filename}}')"> Route {{loop.index}} </button>
+            <button type="button" onclick="window.open('localhost:5000/show/{{file.filename}}')"> Route {{file.title}} </button>
          {% endfor %}
 
 {% endblock body %}
