@@ -51,6 +51,8 @@ def upload():
 
 @app.route('/show/<file>')
 def show(file):
+    #file_url = File.query.filter_by(filename=file).first_or_404()
+    #return render_template('show.html', file=file_url)
     file_url = url_for('static', filename=('gpx/' + file))
     return (render_template('show.html', value = file_url))
 
