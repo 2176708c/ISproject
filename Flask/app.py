@@ -82,6 +82,7 @@ def login():
         result = query.first()
         if result:
             session['logged_in'] = True
+            session['active'] = POST_USERNAME
             return (render_template('home.html'))
         else:
             error = 'wrong password!'
